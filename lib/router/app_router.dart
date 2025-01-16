@@ -7,7 +7,10 @@ import 'package:riverpod_architecture_app/features/authentication/presentation/a
 import 'package:riverpod_architecture_app/features/post/presentation/post_edit_screen.dart';
 import 'package:riverpod_architecture_app/features/post/presentation/post_screen.dart';
 import 'package:riverpod_architecture_app/features/post/presentation/posts_screen.dart';
+import 'package:riverpod_architecture_app/features/riverpottest/presentation/riverpod_test_screen.dart';
 import 'package:riverpod_architecture_app/features/weather/presentation/weather_screen.dart';
+
+import '../features/todo/presentation/todo_screen.dart';
 part 'app_router.g.dart';
 
 enum AppRoute {
@@ -16,6 +19,8 @@ enum AppRoute {
   posts,
   post,
   postedit,
+  riverpodtest,
+  todo,
 }
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -45,36 +50,49 @@ GoRouter appRouter(Ref ref) {
                 NoTransitionPage(child: WeatherScreen()),
           ),
           GoRoute(
-              path: '/posts',
-              name: AppRoute.posts.name,
-              pageBuilder: (context, state) =>
-                  NoTransitionPage(child: PostsScreen()),
-              routes: [
-                GoRoute(
-                  path: 'post/:postId',
-                  name: AppRoute.post.name,
-                  pageBuilder: (context, state) {
-                    final postId = state.pathParameters['postId'];
-                    return NoTransitionPage(
-                      child: PostScreen(
-                        postId: int.parse(postId!),
-                      ),
-                    );
-                  },
-                ),
-                GoRoute(
-                  path: 'postedit/:postId',
-                  name: AppRoute.postedit.name,
-                  pageBuilder: (context, state) {
-                    final postId = state.pathParameters['postId'];
-                    return NoTransitionPage(
-                      child: PostEditScreen(
-                        postId: int.parse(postId!),
-                      ),
-                    );
-                  },
-                ),
-              ])
+            path: '/posts',
+            name: AppRoute.posts.name,
+            pageBuilder: (context, state) =>
+                NoTransitionPage(child: PostsScreen()),
+            routes: [
+              GoRoute(
+                path: 'post/:postId',
+                name: AppRoute.post.name,
+                pageBuilder: (context, state) {
+                  final postId = state.pathParameters['postId'];
+                  return NoTransitionPage(
+                    child: PostScreen(
+                      postId: int.parse(postId!),
+                    ),
+                  );
+                },
+              ),
+              GoRoute(
+                path: 'postedit/:postId',
+                name: AppRoute.postedit.name,
+                pageBuilder: (context, state) {
+                  final postId = state.pathParameters['postId'];
+                  return NoTransitionPage(
+                    child: PostEditScreen(
+                      postId: int.parse(postId!),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+          GoRoute(
+            path: '/riverpodtest',
+            name: AppRoute.riverpodtest.name,
+            pageBuilder: (context, state) =>
+                NoTransitionPage(child: RiverpodTestScreen()),
+          ),
+          GoRoute(
+            path: '/todo',
+            name: AppRoute.todo.name,
+            pageBuilder: (context, state) =>
+                NoTransitionPage(child: TodoScreen()),
+          ),
         ],
       ),
     ],

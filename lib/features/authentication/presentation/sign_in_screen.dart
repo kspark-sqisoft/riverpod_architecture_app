@@ -4,6 +4,7 @@ import 'package:riverpod_architecture_app/features/authentication/presentation/s
 import 'package:riverpod_architecture_app/main.dart';
 import 'package:riverpod_architecture_app/utils/async_value_ui.dart';
 
+import '../../../common/provider/provider.dart';
 import '../data/auth_repository.dart';
 
 class SignInScreen extends ConsumerWidget {

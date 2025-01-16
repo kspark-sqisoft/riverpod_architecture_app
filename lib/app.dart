@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_architecture_app/common/provider/theme_provider.dart';
 import 'package:riverpod_architecture_app/main.dart';
 import 'package:riverpod_architecture_app/router/app_router.dart';
 
@@ -26,12 +27,14 @@ class _AppState extends ConsumerState<App> {
   @override
   Widget build(BuildContext context) {
     final appRouter = ref.watch(appRouterProvider);
+    final theme = ref.watch(themeProvider);
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routerConfig: appRouter,
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-      ),
+      theme: switch (theme) {
+        LightTheme() => ThemeData.light(useMaterial3: true),
+        DarkTheme() => ThemeData.dark(useMaterial3: true),
+      },
     );
   }
 }

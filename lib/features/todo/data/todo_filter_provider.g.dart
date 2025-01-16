@@ -1,26 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'app_router.dart';
+part of 'todo_filter_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appRouterHash() => r'31fe1725159ce0ec97b5c0a54434250d230fb45b';
+String _$todoFilterHash() => r'a3f1574576b8274665b7ca9810e851b62679bcfa';
 
-/// See also [appRouter].
-@ProviderFor(appRouter)
-final appRouterProvider = Provider<GoRouter>.internal(
-  appRouter,
-  name: r'appRouterProvider',
+/// See also [TodoFilter].
+@ProviderFor(TodoFilter)
+final todoFilterProvider =
+    AutoDisposeNotifierProvider<TodoFilter, Filter>.internal(
+  TodoFilter.new,
+  name: r'todoFilterProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$appRouterHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$todoFilterHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef AppRouterRef = ProviderRef<GoRouter>;
+typedef _$TodoFilter = AutoDisposeNotifier<Filter>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

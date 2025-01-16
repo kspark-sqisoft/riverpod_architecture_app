@@ -1,5 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:riverpod_architecture_app/utils/string_color_extension.dart';
 
+import '../../../main.dart';
 import '../data/post_repository.dart';
 import '../domain/post.dart';
 
@@ -31,6 +33,7 @@ class PostEditController extends _$PostEditController {
         await AsyncValue.guard(() => postsRepository.updatePost(updated));
     // on success, invalidate the FutureProvider that fetches the post data
     if (newState is AsyncData) {
+      logger.d('ref.invalidate(fetchPostProvider(${updated.id}))'.toMagenta);
       ref.invalidate(fetchPostProvider(updated.id));
     }
     if (mounted) {

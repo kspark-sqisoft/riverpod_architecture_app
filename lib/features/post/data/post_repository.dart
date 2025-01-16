@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:riverpod_architecture_app/utils/string_color_extension.dart';
 
 import '../../../common/api/api_error.dart';
 import '../../../common/api/dio_provider.dart';
@@ -73,7 +74,7 @@ class PostRepository {
 @Riverpod(keepAlive: true)
 PostRepository postRepository(Ref ref) {
   ref.onDispose(() {
-    logger.d('postRepositoryProvider onDispose');
+    logger.d('postRepositoryProvider onDispose'.toRed);
   });
   ref.onCancel(() {
     logger.d('postRepositoryProvider onCancel');
@@ -87,7 +88,7 @@ PostRepository postRepository(Ref ref) {
   ref.onRemoveListener(() {
     logger.d('postRepositoryProvider onRemoveListener');
   });
-  logger.d('postRepositoryProvider initialized');
+  logger.d('postRepositoryProvider initialized'.toGreen);
   logger.d('postRepositoryProvider ref.watch(dioProvider)');
   return PostRepository(dio: ref.watch(dioProvider));
 }
@@ -99,7 +100,7 @@ Future<List<Post>> fetchPosts(Ref ref) {
   // When the provider is destroyed, cancel the http request
   ref.onDispose(() {
     cancelToken.cancel();
-    logger.d('fetchPostsProvider onDispose');
+    logger.d('fetchPostsProvider onDispose'.toRed);
   });
   ref.onCancel(() {
     logger.d('fetchPostsProvider onCancel');
@@ -113,14 +114,14 @@ Future<List<Post>> fetchPosts(Ref ref) {
   ref.onRemoveListener(() {
     logger.d('fetchPostsProvider onRemoveListener');
   });
-  logger.d('fetchPostsProvider initialized');
+  logger.d('fetchPostsProvider initialized'.toGreen);
 
   return ref.watch(postRepositoryProvider).fetchPosts(cancelToken: cancelToken);
 }
 
 @riverpod
 Future<Post> fetchPost(Ref ref, int postId) {
-  logger.d('fetchPostProvider(postId:$postId) initialized');
+  logger.d('fetchPostProvider(postId:$postId) initialized'.toGreen);
   // get the [KeepAliveLink]
   final link = ref.keepAlive();
   logger.d('fetchPostProvider(postId:$postId) keepAlive link open');
@@ -133,7 +134,8 @@ Future<Post> fetchPost(Ref ref, int postId) {
     timer?.cancel();
     cancelToken.cancel();
     logger.d(
-        'fetchPostProvider(postId:$postId) onDispose timer cancel, cancelToke cancel');
+        'fetchPostProvider(postId:$postId) onDispose timer cancel, cancelToke cancel'
+            .toRed);
   });
   // When the last listener is removed, start a timer to dispose the cached data
   ref.onCancel(() {

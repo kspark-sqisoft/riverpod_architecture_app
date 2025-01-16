@@ -67,14 +67,19 @@ class _RiverpodTestScreenState extends ConsumerState<RiverpodTestScreen> {
                     Text('Time:$time'),
                     ElevatedButton(
                         onPressed: () {
+                          String resultCity = '';
                           if (city == 'seoul') {
-                            ref.read(cityProvider.notifier).change('LA');
+                            resultCity = 'LA';
                           } else {
-                            ref.read(cityProvider.notifier).change('seoul');
+                            resultCity = 'seoul';
+                            
                           }
                           logger.d('------------------------');
-                          logger.d('ref.read(cityProvider.notifier).change'
+                          logger.d('ref.read(cityProvider.notifier).change($resultCity)'
                               .toMagenta);
+                            ref.read(cityProvider.notifier).change(resultCity);
+
+                          
                         },
                         child: Text('Change City'))
                   ],
@@ -117,7 +122,7 @@ class _RiverpodTestScreenState extends ConsumerState<RiverpodTestScreen> {
               //return 값이 있다.
               final newState = ref.refresh(counterProvider);
               logger.d(
-                  'RiverpodTestScreen ref.refresh(counterProvider) newState:$newState');
+                  'RiverpodTestScreen ref.refresh(counterProvider) newState:$newState'.toMagenta);
             },
             child: Text('refresh'),
           ),

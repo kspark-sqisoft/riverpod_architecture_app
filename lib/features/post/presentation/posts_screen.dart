@@ -67,7 +67,7 @@ class _PostListState extends ConsumerState<PostList> {
           FloatingActionButton(
             heroTag: 'f0',
             onPressed: () async {
-              logger.d('ref.refresh(fetchPostsProvider) ------------------');
+              logger.d('ref.refresh(fetchPostsProvider) ------------------'.toMagenta);
               final newState = await ref.refresh(fetchPostsProvider.future);
             },
             child: Text('refresh'),
@@ -78,7 +78,7 @@ class _PostListState extends ConsumerState<PostList> {
           FloatingActionButton(
             heroTag: 'f1',
             onPressed: () {
-              logger.d('ref.invalidate(fetchPostsProvider) ------------------');
+              logger.d('ref.invalidate(fetchPostsProvider) ------------------'.toMagenta);
               ref.invalidate(fetchPostsProvider);
             },
             child: Text('invalidate'),
@@ -92,7 +92,7 @@ class _PostListState extends ConsumerState<PostList> {
               //다른 화면의 프로바이더 refresh
               final newState = ref.refresh(counterProvider);
               logger.d(
-                  'PostsScreen ref.refresh(counterProvider) newState:$newState');
+                  'ref.refresh(counterProvider) newState:$newState'.toMagenta);
             },
             child: Text('counter refresh'),
           ),

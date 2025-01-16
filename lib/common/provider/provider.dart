@@ -25,7 +25,7 @@ String hello(Ref ref) {
   ref.onRemoveListener(() {
     logger.d('helloProvider onRemoveListener');
   });
-  logger.d('helloProvider initialized'.toGreen);
+  logger.d('helloProvider initialized(build)'.toGreen);
   return 'hello keesoon not autoDispose keepAlive';
 }
 
@@ -46,7 +46,7 @@ String hi(Ref ref) {
   ref.onRemoveListener(() {
     logger.d('hiProvider onRemoveListener');
   });
-  logger.d('hiProvider initialized'.toGreen);
+  logger.d('hiProvider initialized(build)'.toGreen);
   return 'hi keesoon autoDispose';
 }
 
@@ -69,7 +69,7 @@ class Nation extends _$Nation {
     ref.onRemoveListener(() {
       logger.d('nationProvider onRemoveListener');
     });
-    logger.d('nationProvider initialized'.toGreen);
+    logger.d('nationProvider initialized(build)'.toGreen);
     return 'korea';
   }
 
@@ -97,7 +97,7 @@ class Name extends _$Name {
     ref.onRemoveListener(() {
       logger.d('nameProvider onRemoveListener');
     });
-    logger.d('nameProvider initialized'.toGreen);
+    logger.d('nameProvider initialized(build)'.toGreen);
     return 'keesoon';
   }
 
@@ -125,7 +125,7 @@ class Counter extends _$Counter {
     ref.onRemoveListener(() {
       logger.d('counterProvider onRemoveListener');
     });
-    logger.d('counterProvider initialized'.toGreen);
+    logger.d('counterProvider initialized(build)'.toGreen);
     return 0;
   }
 
@@ -157,7 +157,7 @@ class Time extends _$Time {
     ref.onRemoveListener(() {
       logger.d('timeProvider onRemoveListener');
     });
-    logger.d('timeProvider initialized'.toGreen);
+    logger.d('timeProvider initialized(build)'.toGreen);
     //프로바이더 안에서 다른 프로바이더를 watch 하면 다른 프로바이더의 상태가 변하면 이 프로바이더가 dispose 되고 build(initialized) 된다.
     final city = ref.watch(cityProvider);
     if (city == 'seoul') {
@@ -187,11 +187,12 @@ class City extends _$City {
     ref.onRemoveListener(() {
       logger.d('cityProvider onRemoveListener');
     });
-    logger.d('cityProvider initialized'.toGreen);
+    logger.d('cityProvider initialized(build)'.toGreen);
     return 'seoul';
   }
 
   void change(String city) {
+    logger.d('cityProvider change($city)'.toMagenta);
     state = city;
   }
 }

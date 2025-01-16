@@ -32,6 +32,6 @@ TodoRepository todoRepository(Ref ref) {
   ref.onRemoveListener(() {
     logger.d('todoRepositoryProvider onRemoveListener');
   });
-  logger.d('todoRepositoryProvider initialized'.toGreen);
+  logger.d('todoRepositoryProvider initialized(build)'.toGreen);
   throw UnimplementedError();
 }

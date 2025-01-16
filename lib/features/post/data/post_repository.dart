@@ -88,7 +88,7 @@ PostRepository postRepository(Ref ref) {
   ref.onRemoveListener(() {
     logger.d('postRepositoryProvider onRemoveListener');
   });
-  logger.d('postRepositoryProvider initialized'.toGreen);
+  logger.d('postRepositoryProvider initialized(build)'.toGreen);
   logger.d('postRepositoryProvider ref.watch(dioProvider)');
   return PostRepository(dio: ref.watch(dioProvider));
 }
@@ -121,7 +121,7 @@ Future<List<Post>> fetchPosts(Ref ref) {
 
 @riverpod
 Future<Post> fetchPost(Ref ref, int postId) {
-  logger.d('fetchPostProvider(postId:$postId) initialized'.toGreen);
+  logger.d('fetchPostProvider(postId:$postId) initialized(build)'.toGreen);
   // get the [KeepAliveLink]
   final link = ref.keepAlive();
   logger.d('fetchPostProvider(postId:$postId) keepAlive link open');

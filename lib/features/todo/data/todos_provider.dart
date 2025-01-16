@@ -26,7 +26,7 @@ class Todos extends _$Todos {
     ref.onRemoveListener(() {
       logger.d('todosProvider onRemoveListener');
     });
-    logger.d('todosProvider initialized'.toGreen);
+    logger.d('todosProvider initialized(build)'.toGreen);
     return _getTodos();
   }
 

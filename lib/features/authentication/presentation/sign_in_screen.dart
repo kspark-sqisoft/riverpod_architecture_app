@@ -35,6 +35,7 @@ class SignInScreen extends ConsumerWidget {
           children: [
             Text(hello),
             Text(hi),
+            Divider(),
             Column(
               children: [
                 Text(nation),
@@ -48,10 +49,11 @@ class SignInScreen extends ConsumerWidget {
                       ref.read(nationProvider.notifier).change('korea');
                     }
                   },
-                  child: Text('change nation '),
+                  child: Text('nationProvider - keepAlive '),
                 ),
               ],
             ),
+            Divider(),
             Column(
               children: [
                 Text(name),
@@ -65,9 +67,10 @@ class SignInScreen extends ConsumerWidget {
                         ref.read(nameProvider.notifier).change('keesoon');
                       }
                     },
-                    child: Text('change name'))
+                    child: Text('nameProvider - autoDispose'))
               ],
             ),
+            Divider(),
             SizedBox(
               width: 200,
               height: 50,

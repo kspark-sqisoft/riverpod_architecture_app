@@ -58,6 +58,7 @@ class _WeatherScreenState extends ConsumerState<WeatherScreen> {
             children: [
               Text(hello),
               Text(hi),
+              Divider(),
               Column(
                 children: [
                   Text(nation),
@@ -71,10 +72,11 @@ class _WeatherScreenState extends ConsumerState<WeatherScreen> {
                         ref.read(nationProvider.notifier).change('korea');
                       }
                     },
-                    child: Text('change nation '),
+                    child: Text('nationProvider - keepAlive '),
                   ),
                 ],
               ),
+              Divider(),
               Column(
                 children: [
                   Text(name),
@@ -88,7 +90,7 @@ class _WeatherScreenState extends ConsumerState<WeatherScreen> {
                         ref.read(nameProvider.notifier).change('keesoon');
                       }
                     },
-                    child: Text('change name'),
+                    child: Text('nameProvider - autoDispose'),
                   ),
                 ],
               ),

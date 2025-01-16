@@ -72,7 +72,7 @@ class _RiverpodTestScreenState extends ConsumerState<RiverpodTestScreen> {
                           } else {
                             ref.read(cityProvider.notifier).change('seoul');
                           }
-
+                          logger.d('------------------------');
                           logger.d('ref.read(cityProvider.notifier).change'
                               .toMagenta);
                         },

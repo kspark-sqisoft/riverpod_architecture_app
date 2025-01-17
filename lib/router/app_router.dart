@@ -7,6 +7,7 @@ import 'package:riverpod_architecture_app/components/scaffold_with_navbar_shell.
 import 'package:riverpod_architecture_app/features/authentication/presentation/auth_screen.dart';
 import 'package:riverpod_architecture_app/features/cretabook/application/cretabook_service.dart';
 import 'package:riverpod_architecture_app/features/cretabook/presentation/cretabook_screen.dart';
+import 'package:riverpod_architecture_app/features/inmemory/presentation/in_memory_screen.dart';
 import 'package:riverpod_architecture_app/features/mediakit/presentation/mediakit_screen.dart';
 import 'package:riverpod_architecture_app/features/post/presentation/post_edit_screen.dart';
 import 'package:riverpod_architecture_app/features/post/presentation/post_screen.dart';
@@ -26,7 +27,8 @@ enum AppRoute {
   riverpodtest,
   todo,
   mediakit,
-  cretabook
+  cretabook,
+  inmemory
 }
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -119,6 +121,12 @@ GoRouter appRouter(Ref ref) {
                   }),
                 ], child: CretaBookScreen()));
               }),
+          GoRoute(
+            path: '/inmemory',
+            name: AppRoute.inmemory.name,
+            pageBuilder: (context, state) =>
+                NoTransitionPage(child: InMemoryScreen()),
+          ),
         ],
       ),
     ],

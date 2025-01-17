@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
+import 'package:media_kit/media_kit.dart';
 import 'package:riverpod_architecture_app/app.dart';
 import 'package:riverpod_architecture_app/features/todo/data/fake_todo_repository.dart';
 import 'package:riverpod_architecture_app/features/todo/data/todo_repository.dart';
@@ -12,6 +13,8 @@ final logger = Logger(
 
 void main() {
   logger.d('main');
+  WidgetsFlutterBinding.ensureInitialized();
+  MediaKit.ensureInitialized();
   runApp(
     ProviderScope(
       overrides: [

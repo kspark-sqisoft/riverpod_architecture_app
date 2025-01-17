@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_architecture_app/utils/string_color_extension.dart';
 
 import '../../../common/provider/provider.dart';
 import '../../../constants/app_colors.dart';
 import '../../../main.dart';
-import '../../authentication/data/auth_repository.dart';
 import 'city_search_box.dart';
 import 'current_weather.dart';
 import 'hourly_weather.dart';
@@ -33,13 +33,13 @@ class _WeatherScreenState extends ConsumerState<WeatherScreen> {
   @override
   Widget build(BuildContext context) {
     logger.d('-------------------------------------');
-    logger.d('WeatherScreen ref.watch(helloProvider)');
+    logger.d('WeatherScreen ref.watch(helloProvider)'.toMagenta);
     final hello = ref.watch(helloProvider);
-    logger.d('WeatherScreen ref.watch(hiProvider)');
+    logger.d('WeatherScreen ref.watch(hiProvider)'.toMagenta);
     final hi = ref.watch(hiProvider);
-    logger.d('WeatherScreen ref.watch(nationProvider)');
+    logger.d('WeatherScreen ref.watch(nationProvider)'.toMagenta);
     final nation = ref.watch(nationProvider);
-    logger.d('WeatherScreen ref.watch(nameProvider)');
+    logger.d('WeatherScreen ref.watch(nameProvider)'.toMagenta);
     final name = ref.watch(nameProvider);
     return Scaffold(
       body: Container(

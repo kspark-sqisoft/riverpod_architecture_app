@@ -6,7 +6,7 @@ part of 'weather_service.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$currentWeatherHash() => r'7a763abc2668e6d05b217f752ec4b7ace0650545';
+String _$currentWeatherHash() => r'f45ceb78c3471f0d74acbfe234281ee7ae1cca9f';
 
 /// See also [currentWeather].
 @ProviderFor(currentWeather)
@@ -23,7 +23,7 @@ final currentWeatherProvider = AutoDisposeFutureProvider<WeatherData>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef CurrentWeatherRef = AutoDisposeFutureProviderRef<WeatherData>;
-String _$hourlyWeatherHash() => r'82c23382c36b1582beeca79898d5799f6c0afe78';
+String _$hourlyWeatherHash() => r'0b09a09e31a1e05734bdd294f3dbab4d35ef80e1';
 
 /// See also [hourlyWeather].
 @ProviderFor(hourlyWeather)

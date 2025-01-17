@@ -7,7 +7,7 @@ part of 'post_edit_controller.dart';
 // **************************************************************************
 
 String _$postEditControllerHash() =>
-    r'80fcf66d29cc452775471ab7400616259b1194ff';
+    r'9725d507bc10c6634e68b9f8317e75d1438aa9c3';
 
 /// See also [PostEditController].
 @ProviderFor(PostEditController)

@@ -1,8 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:riverpod_architecture_app/features/todo/data/todo_repository.dart';
 import 'package:riverpod_architecture_app/utils/string_color_extension.dart';
-import 'package:uuid/uuid.dart';
 
 import '../../main.dart';
 
@@ -130,11 +129,66 @@ class Counter extends _$Counter {
   }
 
   void increment() {
+    logger.d('counterProvider increment');
     state++;
   }
 
   void decrement() {
+    logger.d('counterProvider decrement');
     state--;
+  }
+}
+
+@riverpod
+class AsyncCounter extends _$AsyncCounter {
+  @override
+  FutureOr<int> build() async {
+    ref.onDispose(() {
+      logger.d('asyncCounterProvider onDispose'.toRed);
+    });
+    ref.onCancel(() {
+      logger.d('asyncCounterProvider onCancel');
+    });
+    ref.onResume(() {
+      logger.d('asyncCounterProvider onResume');
+    });
+    ref.onAddListener(() {
+      logger.d('asyncCounterProvider onAddListener');
+    });
+    ref.onRemoveListener(() {
+      logger.d('asyncCounterProvider onRemoveListener');
+    });
+    logger.d('asyncCounterProvider initialized(build)'.toGreen);
+    await Future.delayed(Duration(seconds: 1));
+    return 0;
+  }
+
+  Future<void> increment() async {
+    logger.d('asyncCounterProvider increment');
+    state = AsyncLoading<int>();
+    try {
+      final int? currentValue = state.value;
+      if (currentValue == null) {
+        throw Exception('value가 null 일수 없다.');
+      }
+      await Future.delayed(Duration(seconds: 1));
+      state = AsyncValue<int>.data(currentValue + 1);
+    } catch (error, stackTrace) {
+      state = AsyncValue<int>.error(error, stackTrace);
+    }
+  }
+
+  Future<void> decrement() async {
+    logger.d('asyncCounterProvider decrement');
+    state = AsyncLoading();
+    state = await AsyncValue.guard(() async {
+      final currentValue = state.value;
+      if (currentValue == null) {
+        throw Exception('value가 null 일수 없다.');
+      }
+      await Future.delayed(Duration(seconds: 1));
+      return currentValue - 1;
+    });
   }
 }
 
@@ -194,5 +248,36 @@ class City extends _$City {
   void change(String city) {
     logger.d('cityProvider change($city)'.toMagenta);
     state = city;
+  }
+}
+
+@riverpod
+class RiverpodTestScreenController extends _$RiverpodTestScreenController {
+  @override
+  FutureOr<void> build() {
+    ref.onDispose(() {
+      logger.d('riverpodTestScreenControllerProvider onDispose'.toRed);
+    });
+    ref.onCancel(() {
+      logger.d('riverpodTestScreenControllerProvider onCancel');
+    });
+    ref.onResume(() {
+      logger.d('riverpodTestScreenControllerProvider onResume');
+    });
+    ref.onAddListener(() {
+      logger.d('riverpodTestScreenControllerProvider onAddListener');
+    });
+    ref.onRemoveListener(() {
+      logger.d('riverpodTestScreenControllerProvider onRemoveListener');
+    });
+    logger.d('riverpodTestScreenControllerProvider initialized(build)'.toGreen);
+  }
+
+  Future<void> getTodos() async {
+    state = AsyncLoading();
+    final todoRepository = ref.read(todoRepositoryProvider);
+    //state = await AsyncValue.guard(() => todoRepository.getTodos());
+    //아래 같은 표현
+    state = await AsyncValue.guard(todoRepository.getTodos);
   }
 }

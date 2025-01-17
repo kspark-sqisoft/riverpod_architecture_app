@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:media_kit_video/media_kit_video.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_architecture_app/components/scaffold_with_navbar_shell.dart';
 import 'package:riverpod_architecture_app/features/authentication/presentation/auth_screen.dart';
+import 'package:riverpod_architecture_app/features/cretabook/application/cretabook_service.dart';
+import 'package:riverpod_architecture_app/features/cretabook/presentation/cretabook_screen.dart';
+import 'package:riverpod_architecture_app/features/mediakit/presentation/mediakit_screen.dart';
 import 'package:riverpod_architecture_app/features/post/presentation/post_edit_screen.dart';
 import 'package:riverpod_architecture_app/features/post/presentation/post_screen.dart';
 import 'package:riverpod_architecture_app/features/post/presentation/posts_screen.dart';
 import 'package:riverpod_architecture_app/features/riverpottest/presentation/riverpod_test_screen.dart';
 import 'package:riverpod_architecture_app/features/weather/presentation/weather_screen.dart';
-
+import 'package:collection/collection.dart';
 import '../features/todo/presentation/todo_screen.dart';
 part 'app_router.g.dart';
 
@@ -21,6 +25,8 @@ enum AppRoute {
   postedit,
   riverpodtest,
   todo,
+  mediakit,
+  cretabook
 }
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -93,6 +99,26 @@ GoRouter appRouter(Ref ref) {
             pageBuilder: (context, state) =>
                 NoTransitionPage(child: TodoScreen()),
           ),
+          GoRoute(
+            path: '/mediakit',
+            name: AppRoute.mediakit.name,
+            pageBuilder: (context, state) =>
+                NoTransitionPage(child: MediakitScreen()),
+          ),
+          GoRoute(
+              path: '/cretabook',
+              name: AppRoute.cretabook.name,
+              pageBuilder: (context, state) {
+                final controllers = state.extra as List<VideoController>;
+
+                return NoTransitionPage(
+                    child: ProviderScope(overrides: [
+                  ...controllers.mapIndexed((i, controller) {
+                    return videoControllerProvider(id: i)
+                        .overrideWithValue(controllers[i]);
+                  }),
+                ], child: CretaBookScreen()));
+              }),
         ],
       ),
     ],

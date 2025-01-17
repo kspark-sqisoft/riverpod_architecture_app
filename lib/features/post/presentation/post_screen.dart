@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:riverpod_architecture_app/features/post/presentation/post_edit_screen.dart';
 import 'package:riverpod_architecture_app/router/app_router.dart';
 import 'package:riverpod_architecture_app/utils/async_value_extension.dart';
 import 'package:riverpod_architecture_app/utils/string_color_extension.dart';
@@ -22,7 +21,7 @@ class _PostScreenState extends ConsumerState<PostScreen> {
   Widget build(BuildContext context) {
     final postId = widget.postId;
     logger.d('-------------------------------------');
-    logger.d('PostScreen ref.watch(fetchPostProvider($postId))');
+    logger.d('PostScreen ref.watch(fetchPostProvider($postId))'.toMagenta);
     final postAsync = ref.watch(fetchPostProvider(postId));
     logger.d('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
     logger.d('postAsync:${postAsync.toStr}'.toYellow);

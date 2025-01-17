@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_architecture_app/features/todo/data/todos_provider.dart';
 import 'package:riverpod_architecture_app/main.dart';
@@ -37,6 +36,7 @@ class _TodoHeaderState extends ConsumerState<TodoHeader> {
   @override
   Widget build(BuildContext context) {
     final asyncTodos = ref.watch(todosProvider);
+    logger.d('TodoHeader ref.watch(todosProvider)'.toBlue);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [

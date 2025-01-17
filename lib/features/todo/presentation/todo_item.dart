@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_architecture_app/features/todo/data/todo_provider.dart';
 import 'package:riverpod_architecture_app/features/todo/data/todos_provider.dart';
+import 'package:riverpod_architecture_app/utils/string_color_extension.dart';
+
+import '../../../main.dart';
 
 class TodoItem extends ConsumerWidget {
   const TodoItem({super.key});
@@ -9,6 +12,7 @@ class TodoItem extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final todo = ref.watch(todoProvider);
+    logger.d('TodoItem ref.watch(todoProvider)'.toMagenta);
     return ListTile(
       leading: Checkbox(
         value: todo.completed,

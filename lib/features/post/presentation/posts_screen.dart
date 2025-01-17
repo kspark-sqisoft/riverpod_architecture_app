@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_architecture_app/common/provider/provider.dart';
-import 'package:riverpod_architecture_app/features/post/presentation/post_screen.dart';
 import 'package:riverpod_architecture_app/router/app_router.dart';
 import 'package:riverpod_architecture_app/utils/async_value_extension.dart';
 import 'package:riverpod_architecture_app/utils/string_color_extension.dart';
@@ -50,7 +49,7 @@ class _PostListState extends ConsumerState<PostList> {
   @override
   Widget build(BuildContext context) {
     logger.d('-------------------------------------');
-    logger.d('PostsScreen PostList ref.watch(fetchPostsProvider)');
+    logger.d('PostsScreen PostList ref.watch(fetchPostsProvider)'.toMagenta);
     final postsAsync = ref.watch(fetchPostsProvider);
     logger.d('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
     logger.d('postsAsync:${postsAsync.toStr}'.toYellow);
@@ -67,7 +66,8 @@ class _PostListState extends ConsumerState<PostList> {
           FloatingActionButton(
             heroTag: 'f0',
             onPressed: () async {
-              logger.d('ref.refresh(fetchPostsProvider) ------------------'.toMagenta);
+              logger.d('ref.refresh(fetchPostsProvider) ------------------'
+                  .toMagenta);
               final newState = await ref.refresh(fetchPostsProvider.future);
             },
             child: Text('refresh'),
@@ -78,7 +78,8 @@ class _PostListState extends ConsumerState<PostList> {
           FloatingActionButton(
             heroTag: 'f1',
             onPressed: () {
-              logger.d('ref.invalidate(fetchPostsProvider) ------------------'.toMagenta);
+              logger.d('ref.invalidate(fetchPostsProvider) ------------------'
+                  .toMagenta);
               ref.invalidate(fetchPostsProvider);
             },
             child: Text('invalidate'),

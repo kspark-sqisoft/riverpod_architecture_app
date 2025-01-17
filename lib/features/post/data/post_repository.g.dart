@@ -6,7 +6,7 @@ part of 'post_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$postRepositoryHash() => r'42e3a9b7f15f323dec4acc1009882de06ec91550';
+String _$postRepositoryHash() => r'e770c5b9fb0585349d125f753b1b961b6999aba6';
 
 /// See also [postRepository].
 @ProviderFor(postRepository)
@@ -39,7 +39,7 @@ final fetchPostsProvider = AutoDisposeFutureProvider<List<Post>>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef FetchPostsRef = AutoDisposeFutureProviderRef<List<Post>>;
-String _$fetchPostHash() => r'4c82ec253cd7b1b8efded625396524058233d893';
+String _$fetchPostHash() => r'f8c34c232fe48d9fcdb4f3904cdd76db70ac7491';
 
 /// Copied from Dart SDK
 class _SystemHash {

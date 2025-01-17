@@ -22,6 +22,7 @@ class _TodoListState extends ConsumerState<TodoList> {
   List<Todo> filteredTodos(List<Todo> todos) {
     //필터터
     final selectedFilter = ref.watch(todoFilterProvider);
+    logger.d('TodoList ref.watch(todoFilterProvider)'.toMagenta);
     List<Todo> tempTodos = switch (selectedFilter) {
       Filter.active => todos.where((todo) => !todo.completed).toList(),
       Filter.completed => todos.where((todo) => todo.completed).toList(),
@@ -29,6 +30,7 @@ class _TodoListState extends ConsumerState<TodoList> {
     };
     //검색
     final search = ref.watch(todoSearchProvider);
+    logger.d('TodoList ref.watch(todoSearchProvider)'.toMagenta);
     if (search.isNotEmpty) {
       tempTodos = tempTodos
           .where(
@@ -66,7 +68,7 @@ class _TodoListState extends ConsumerState<TodoList> {
     });
 
     logger.d('-------------------------------------');
-    logger.d('TodoList 화면 ref.watch(todosProvider)');
+    logger.d('TodoList ref.watch(todosProvider)'.toMagenta);
     final asyncTodos = ref.watch(todosProvider);
     logger.d('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
     logger.d('asyncTodos:${asyncTodos.toStr}'.toYellow);

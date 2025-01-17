@@ -3,7 +3,6 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:riverpod_architecture_app/features/authentication/domain/user.dart';
 import 'package:riverpod_architecture_app/utils/in_memory_store.dart';
 
-import '../../../main.dart';
 part 'auth_repository.g.dart';
 
 //데이터 계층

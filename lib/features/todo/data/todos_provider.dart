@@ -10,7 +10,7 @@ part 'todos_provider.g.dart';
 @riverpod
 class Todos extends _$Todos {
   @override
-  FutureOr<List<Todo>> build() {
+  FutureOr<List<Todo>> build() async {
     ref.onDispose(() {
       logger.d('todosProvider onDispose'.toRed);
     });
@@ -27,11 +27,11 @@ class Todos extends _$Todos {
       logger.d('todosProvider onRemoveListener');
     });
     logger.d('todosProvider initialized(build)'.toGreen);
-    return _getTodos();
+    return await _getTodos();
   }
 
-  Future<List<Todo>> _getTodos() {
-    return ref.read(todoRepositoryProvider).getTodos();
+  Future<List<Todo>> _getTodos() async {
+    return await ref.read(todoRepositoryProvider).getTodos();
   }
 
   Future<void> addTodo(String desc) async {

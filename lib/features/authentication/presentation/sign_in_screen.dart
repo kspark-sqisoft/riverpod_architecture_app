@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_architecture_app/features/authentication/presentation/sign_in_screen_controller.dart';
 import 'package:riverpod_architecture_app/main.dart';
 import 'package:riverpod_architecture_app/utils/async_value_ui.dart';
+import 'package:riverpod_architecture_app/utils/string_color_extension.dart';
 
 import '../../../common/provider/provider.dart';
-import '../data/auth_repository.dart';
 
 class SignInScreen extends ConsumerWidget {
   const SignInScreen({super.key});
@@ -18,13 +18,13 @@ class SignInScreen extends ConsumerWidget {
     });
     final state = ref.watch(signInScreenControllerProvider);
     logger.d('-------------------------------------');
-    logger.d('SignInScreen ref.watch(helloProvider)');
+    logger.d('SignInScreen ref.watch(helloProvider)'.toMagenta);
     final hello = ref.watch(helloProvider);
-    logger.d('SignInScreen ref.watch(hiProvider)');
+    logger.d('SignInScreen ref.watch(hiProvider)'.toMagenta);
     final hi = ref.watch(hiProvider);
-    logger.d('SignInScreen ref.watch(nationProvider)');
+    logger.d('SignInScreen ref.watch(nationProvider)'.toMagenta);
     final nation = ref.watch(nationProvider);
-    logger.d('SignInScreen ref.watch(nameProvider)');
+    logger.d('SignInScreen ref.watch(nameProvider)'.toMagenta);
     final name = ref.watch(nameProvider);
     return Scaffold(
       appBar: AppBar(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_architecture_app/utils/string_color_extension.dart';
 
+import '../../../main.dart';
 import '../data/todo_filter_provider.dart';
 import '../domain/todo.dart';
 
@@ -27,6 +29,7 @@ class FilterButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentFilter = ref.watch(todoFilterProvider);
+    logger.d('TodoFilter FilterButton ref.watch(todoFilterProvider)'.toMagenta);
 
     return TextButton(
       onPressed: () {

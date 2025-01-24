@@ -32,6 +32,7 @@ class _PostsScreenState extends ConsumerState<PostsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    logger.d('PostsScreen build'.toBlue);
     return Scaffold(
       body: PostList(),
     );

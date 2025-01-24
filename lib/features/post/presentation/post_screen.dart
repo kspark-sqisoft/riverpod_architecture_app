@@ -19,6 +19,7 @@ class PostScreen extends ConsumerStatefulWidget {
 class _PostScreenState extends ConsumerState<PostScreen> {
   @override
   Widget build(BuildContext context) {
+    logger.d('PostScreen build'.toBlue);
     final postId = widget.postId;
     logger.d('-------------------------------------');
     logger.d('PostScreen ref.watch(fetchPostProvider($postId))'.toMagenta);

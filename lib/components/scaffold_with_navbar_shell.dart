@@ -40,6 +40,8 @@ class _ScaffoldWithNavbarShellState
               icon: FaIcon(FontAwesomeIcons.book), label: 'CretaBook'),
           BottomNavigationBarItem(
               icon: FaIcon(FontAwesomeIcons.memory), label: 'ImMemory'),
+          BottomNavigationBarItem(
+              icon: FaIcon(FontAwesomeIcons.video), label: 'MediaPlayer'),
         ],
         selectedItemColor: Colors.lightGreen,
         unselectedItemColor: Colors.grey,
@@ -83,6 +85,8 @@ class _ScaffoldWithNavbarShellState
             .goNamed(AppRoute.cretabook.name, extra: controllers);
       case 7:
         ref.read(appRouterProvider).goNamed(AppRoute.inmemory.name);
+      case 8:
+        ref.read(appRouterProvider).goNamed(AppRoute.mediaplayer.name);
     }
   }
 

@@ -23,6 +23,7 @@ mixin _$MediaItem {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   Duration get duration => throw _privateConstructorUsedError;
+  MediaType get mediaType => throw _privateConstructorUsedError;
 
   /// Serializes this MediaItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +40,7 @@ abstract class $MediaItemCopyWith<$Res> {
   factory $MediaItemCopyWith(MediaItem value, $Res Function(MediaItem) then) =
       _$MediaItemCopyWithImpl<$Res, MediaItem>;
   @useResult
-  $Res call({String id, String title, Duration duration});
+  $Res call({String id, String title, Duration duration, MediaType mediaType});
 }
 
 /// @nodoc
@@ -60,6 +61,7 @@ class _$MediaItemCopyWithImpl<$Res, $Val extends MediaItem>
     Object? id = null,
     Object? title = null,
     Object? duration = null,
+    Object? mediaType = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -74,6 +76,10 @@ class _$MediaItemCopyWithImpl<$Res, $Val extends MediaItem>
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as Duration,
+      mediaType: null == mediaType
+          ? _value.mediaType
+          : mediaType // ignore: cast_nullable_to_non_nullable
+              as MediaType,
     ) as $Val);
   }
 }
@@ -86,7 +92,7 @@ abstract class _$$MediaItemImplCopyWith<$Res>
       __$$MediaItemImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String title, Duration duration});
+  $Res call({String id, String title, Duration duration, MediaType mediaType});
 }
 
 /// @nodoc
@@ -105,6 +111,7 @@ class __$$MediaItemImplCopyWithImpl<$Res>
     Object? id = null,
     Object? title = null,
     Object? duration = null,
+    Object? mediaType = null,
   }) {
     return _then(_$MediaItemImpl(
       id: null == id
@@ -119,6 +126,10 @@ class __$$MediaItemImplCopyWithImpl<$Res>
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as Duration,
+      mediaType: null == mediaType
+          ? _value.mediaType
+          : mediaType // ignore: cast_nullable_to_non_nullable
+              as MediaType,
     ));
   }
 }
@@ -127,7 +138,10 @@ class __$$MediaItemImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MediaItemImpl implements _MediaItem {
   _$MediaItemImpl(
-      {required this.id, required this.title, required this.duration});
+      {required this.id,
+      required this.title,
+      required this.duration,
+      required this.mediaType});
 
   factory _$MediaItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$MediaItemImplFromJson(json);
@@ -138,10 +152,12 @@ class _$MediaItemImpl implements _MediaItem {
   final String title;
   @override
   final Duration duration;
+  @override
+  final MediaType mediaType;
 
   @override
   String toString() {
-    return 'MediaItem(id: $id, title: $title, duration: $duration)';
+    return 'MediaItem(id: $id, title: $title, duration: $duration, mediaType: $mediaType)';
   }
 
   @override
@@ -152,12 +168,14 @@ class _$MediaItemImpl implements _MediaItem {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.duration, duration) ||
-                other.duration == duration));
+                other.duration == duration) &&
+            (identical(other.mediaType, mediaType) ||
+                other.mediaType == mediaType));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, duration);
+  int get hashCode => Object.hash(runtimeType, id, title, duration, mediaType);
 
   /// Create a copy of MediaItem
   /// with the given fields replaced by the non-null parameter values.
@@ -179,7 +197,8 @@ abstract class _MediaItem implements MediaItem {
   factory _MediaItem(
       {required final String id,
       required final String title,
-      required final Duration duration}) = _$MediaItemImpl;
+      required final Duration duration,
+      required final MediaType mediaType}) = _$MediaItemImpl;
 
   factory _MediaItem.fromJson(Map<String, dynamic> json) =
       _$MediaItemImpl.fromJson;
@@ -190,6 +209,8 @@ abstract class _MediaItem implements MediaItem {
   String get title;
   @override
   Duration get duration;
+  @override
+  MediaType get mediaType;
 
   /// Create a copy of MediaItem
   /// with the given fields replaced by the non-null parameter values.

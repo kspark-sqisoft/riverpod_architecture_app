@@ -22,7 +22,9 @@ PlayListState _$PlayListStateFromJson(Map<String, dynamic> json) {
 mixin _$PlayListState {
   bool get playing => throw _privateConstructorUsedError;
   List<MediaItem> get queue => throw _privateConstructorUsedError;
-  int? get queIndex => throw _privateConstructorUsedError;
+  int get queIndex => throw _privateConstructorUsedError;
+  MediaRepeatMode get repeatMode => throw _privateConstructorUsedError;
+  MediaSuffleMode get suffleMode => throw _privateConstructorUsedError;
 
   /// Serializes this PlayListState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +42,12 @@ abstract class $PlayListStateCopyWith<$Res> {
           PlayListState value, $Res Function(PlayListState) then) =
       _$PlayListStateCopyWithImpl<$Res, PlayListState>;
   @useResult
-  $Res call({bool playing, List<MediaItem> queue, int? queIndex});
+  $Res call(
+      {bool playing,
+      List<MediaItem> queue,
+      int queIndex,
+      MediaRepeatMode repeatMode,
+      MediaSuffleMode suffleMode});
 }
 
 /// @nodoc
@@ -60,7 +67,9 @@ class _$PlayListStateCopyWithImpl<$Res, $Val extends PlayListState>
   $Res call({
     Object? playing = null,
     Object? queue = null,
-    Object? queIndex = freezed,
+    Object? queIndex = null,
+    Object? repeatMode = null,
+    Object? suffleMode = null,
   }) {
     return _then(_value.copyWith(
       playing: null == playing
@@ -71,10 +80,18 @@ class _$PlayListStateCopyWithImpl<$Res, $Val extends PlayListState>
           ? _value.queue
           : queue // ignore: cast_nullable_to_non_nullable
               as List<MediaItem>,
-      queIndex: freezed == queIndex
+      queIndex: null == queIndex
           ? _value.queIndex
           : queIndex // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
+      repeatMode: null == repeatMode
+          ? _value.repeatMode
+          : repeatMode // ignore: cast_nullable_to_non_nullable
+              as MediaRepeatMode,
+      suffleMode: null == suffleMode
+          ? _value.suffleMode
+          : suffleMode // ignore: cast_nullable_to_non_nullable
+              as MediaSuffleMode,
     ) as $Val);
   }
 }
@@ -87,7 +104,12 @@ abstract class _$$PlayListStateImplCopyWith<$Res>
       __$$PlayListStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool playing, List<MediaItem> queue, int? queIndex});
+  $Res call(
+      {bool playing,
+      List<MediaItem> queue,
+      int queIndex,
+      MediaRepeatMode repeatMode,
+      MediaSuffleMode suffleMode});
 }
 
 /// @nodoc
@@ -105,7 +127,9 @@ class __$$PlayListStateImplCopyWithImpl<$Res>
   $Res call({
     Object? playing = null,
     Object? queue = null,
-    Object? queIndex = freezed,
+    Object? queIndex = null,
+    Object? repeatMode = null,
+    Object? suffleMode = null,
   }) {
     return _then(_$PlayListStateImpl(
       playing: null == playing
@@ -116,10 +140,18 @@ class __$$PlayListStateImplCopyWithImpl<$Res>
           ? _value._queue
           : queue // ignore: cast_nullable_to_non_nullable
               as List<MediaItem>,
-      queIndex: freezed == queIndex
+      queIndex: null == queIndex
           ? _value.queIndex
           : queIndex // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
+      repeatMode: null == repeatMode
+          ? _value.repeatMode
+          : repeatMode // ignore: cast_nullable_to_non_nullable
+              as MediaRepeatMode,
+      suffleMode: null == suffleMode
+          ? _value.suffleMode
+          : suffleMode // ignore: cast_nullable_to_non_nullable
+              as MediaSuffleMode,
     ));
   }
 }
@@ -130,7 +162,9 @@ class _$PlayListStateImpl extends _PlayListState {
   _$PlayListStateImpl(
       {this.playing = false,
       required final List<MediaItem> queue,
-      this.queIndex = 0})
+      this.queIndex = 0,
+      this.repeatMode = MediaRepeatMode.none,
+      this.suffleMode = MediaSuffleMode.none})
       : _queue = queue,
         super._();
 
@@ -150,11 +184,17 @@ class _$PlayListStateImpl extends _PlayListState {
 
   @override
   @JsonKey()
-  final int? queIndex;
+  final int queIndex;
+  @override
+  @JsonKey()
+  final MediaRepeatMode repeatMode;
+  @override
+  @JsonKey()
+  final MediaSuffleMode suffleMode;
 
   @override
   String toString() {
-    return 'PlayListState(playing: $playing, queue: $queue, queIndex: $queIndex)';
+    return 'PlayListState(playing: $playing, queue: $queue, queIndex: $queIndex, repeatMode: $repeatMode, suffleMode: $suffleMode)';
   }
 
   @override
@@ -165,13 +205,22 @@ class _$PlayListStateImpl extends _PlayListState {
             (identical(other.playing, playing) || other.playing == playing) &&
             const DeepCollectionEquality().equals(other._queue, _queue) &&
             (identical(other.queIndex, queIndex) ||
-                other.queIndex == queIndex));
+                other.queIndex == queIndex) &&
+            (identical(other.repeatMode, repeatMode) ||
+                other.repeatMode == repeatMode) &&
+            (identical(other.suffleMode, suffleMode) ||
+                other.suffleMode == suffleMode));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, playing,
-      const DeepCollectionEquality().hash(_queue), queIndex);
+  int get hashCode => Object.hash(
+      runtimeType,
+      playing,
+      const DeepCollectionEquality().hash(_queue),
+      queIndex,
+      repeatMode,
+      suffleMode);
 
   /// Create a copy of PlayListState
   /// with the given fields replaced by the non-null parameter values.
@@ -193,7 +242,9 @@ abstract class _PlayListState extends PlayListState {
   factory _PlayListState(
       {final bool playing,
       required final List<MediaItem> queue,
-      final int? queIndex}) = _$PlayListStateImpl;
+      final int queIndex,
+      final MediaRepeatMode repeatMode,
+      final MediaSuffleMode suffleMode}) = _$PlayListStateImpl;
   _PlayListState._() : super._();
 
   factory _PlayListState.fromJson(Map<String, dynamic> json) =
@@ -204,7 +255,11 @@ abstract class _PlayListState extends PlayListState {
   @override
   List<MediaItem> get queue;
   @override
-  int? get queIndex;
+  int get queIndex;
+  @override
+  MediaRepeatMode get repeatMode;
+  @override
+  MediaSuffleMode get suffleMode;
 
   /// Create a copy of PlayListState
   /// with the given fields replaced by the non-null parameter values.

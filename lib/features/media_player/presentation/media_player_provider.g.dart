@@ -6,7 +6,7 @@ part of 'media_player_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$mediaPlayerHash() => r'264a493f609413b6b37f7db8a4c0fd59dbbf12a8';
+String _$mediaPlayerHash() => r'beb75af93919991e95a8dbc79bf3ca666925a021';
 
 /// See also [MediaPlayer].
 @ProviderFor(MediaPlayer)

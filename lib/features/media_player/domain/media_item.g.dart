@@ -11,6 +11,7 @@ _$MediaItemImpl _$$MediaItemImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       title: json['title'] as String,
       duration: Duration(microseconds: (json['duration'] as num).toInt()),
+      mediaType: $enumDecode(_$MediaTypeEnumMap, json['mediaType']),
     );
 
 Map<String, dynamic> _$$MediaItemImplToJson(_$MediaItemImpl instance) =>
@@ -18,4 +19,11 @@ Map<String, dynamic> _$$MediaItemImplToJson(_$MediaItemImpl instance) =>
       'id': instance.id,
       'title': instance.title,
       'duration': instance.duration.inMicroseconds,
+      'mediaType': _$MediaTypeEnumMap[instance.mediaType]!,
     };
+
+const _$MediaTypeEnumMap = {
+  MediaType.video: 'video',
+  MediaType.image: 'image',
+  MediaType.text: 'text',
+};
